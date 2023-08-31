@@ -1,0 +1,8 @@
+---
+- name: os specific install service
+  hosts: all
+  tasks:
+    - name: install namo service
+      ansible.builtin.yum:
+        name: nano
+      when: ansible_os_family == "RedHat" and ansible_distribution_version == "9.0"

@@ -1,0 +1,8 @@
+---
+- name: name
+  hosts: test,dev
+  tasks:
+    - name: tasks
+      template:
+        src: hatemplate.j2
+        dest: /var/www/html/index.html

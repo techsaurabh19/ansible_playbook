@@ -1,0 +1,11 @@
+- name: gether fact dumps
+  hosts: localhost
+  tasks:
+    - name: facts
+      setup:
+        gather_subset:  
+          - ! hardware
+      register: hw
+    - name: debug hw
+      debug:
+        var: hw

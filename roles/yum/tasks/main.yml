@@ -1,0 +1,10 @@
+---
+# tasks file for yum
+- name: appstream config
+  yum_repository:
+    baseurl: "{{ baseurl }}"
+    name: "{{ name }}"
+    gpgcheck: 0
+    enabled: 1
+    description: "{{ description }}"
+

@@ -1,0 +1,14 @@
+---
+- name: useradd via loops
+  hosts: all
+  vars_files:
+    uname.yml
+  tasks:
+    - name: user add via loops
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: absent
+        remove: 1
+      loop: "{{ uname }}"
+
+

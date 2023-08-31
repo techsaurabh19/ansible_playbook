@@ -1,0 +1,15 @@
+---
+- name: install webservers service with handler
+  hosts: all
+  tasks:
+    - name: install apache server
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      notify: start_service
+  handlers:
+    - name: start_service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: 1

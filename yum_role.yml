@@ -1,0 +1,5 @@
+---
+- name: yum config via roles
+  hosts: dev
+  roles:
+    - yum

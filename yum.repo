@@ -1,0 +1,12 @@
+[AppStream]
+baseurl = file:///run/media/admin/RHEL-9-0-0-BaseOS-x86_64/AppStream
+name= AppStream
+gpgcheck= 0
+enabled = 1
+
+[BaseOS]
+baseurl= file:///run/media/admin/RHEL-9-0-0-BaseOS-x86_64/BaseOS
+name= BaseOS
+gpgcheck =0
+enabled = 1
+

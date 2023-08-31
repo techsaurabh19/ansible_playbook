@@ -1,0 +1,9 @@
+---
+- name: ssh config file for mange node
+  hosts: docker
+  tasks: 
+    - name: ssh configuration
+      template:
+        src: sshd_config.j2
+        dest: /etc/ssh/sshd_config
+        force: 1

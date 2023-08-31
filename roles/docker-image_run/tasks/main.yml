@@ -1,0 +1,22 @@
+---
+# tasks file for docker-image_run
+#
+- name: clone code from git
+  copy:
+    src: Dockerfile
+    dest: /tmp/Dockerfile
+- name: create image
+  docker_image:
+    build:
+      path: /tmp
+    name: ubuntu_image
+    tag: latest
+    source: build
+- name: launch container
+  docker_container:
+    name: ubuntu_image
+    image: container
+    stage: started
+    ports:
+      - "8080:80"
+

@@ -1,0 +1,16 @@
+---
+- name: aws create
+  hosts: localhost
+  tasks:
+    - name: aws ec2 machine configure
+      amazon.aws.ec2_instance:
+        name: ansible_playbok
+        vpc_subnet_id: subnet-0a2274d54e358bea1
+        key_name: ansible
+        instance_type: t2.micro
+        security_group: sg-0d58d835b645c134d
+        image_id: ami-0da59f1af71ea4ad2
+        region: ap-south-1
+        count: 1
+        aws_access_key: AKIAU647O6V4KAUY7HHB
+        aws_secret_key: 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

@@ -1,0 +1,19 @@
+---
+- name: install httpd
+  hosts: test,dev
+  tasks:
+    - name: install httpd module
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: service start and enabled
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: 1
+    - name: firewallf sdfsdd 
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: 1

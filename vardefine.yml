@@ -1,0 +1,12 @@
+---
+ - name: install packages
+   hosts: all
+   vars:
+     webserver:
+       - httpd
+       - vim
+   tasks:
+     - name: install "{{ webserver }}" 
+       ansible.builtin.dnf:
+         name: "{{ webserver }}"
+       when: webserver is defined

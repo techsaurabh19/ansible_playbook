@@ -1,0 +1,9 @@
+---
+- name: /etc/hosts is up to date
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Deploy /etc/hosts
+      ansible.builtin.template:
+        src: usersloop.j2
+        dest: /home/node/usersloop.txt

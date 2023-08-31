@@ -1,0 +1,20 @@
+- name: configure yum
+  hosts: docker
+  tasks:
+    - name: Add multiple repositories into the same file (1/2)
+      yum_repository:
+        name: AppStream
+        description: AppStream
+        file: AppStream
+        baseurl: file:///run/media/admin/RHEL-9-0-0-BaseOS-x86_64/AppStream
+        gpgcheck: 0
+        enabled: 1
+    - name: Add multiple repositories into the same file (1/2)
+      yum_repository:
+        name: BaseOS
+        description: BaseOS
+        file: BaseOS
+        baseurl: file:///run/media/admin/RHEL-9-0-0-BaseOS-x86_64/BaseOS
+        gpgcheck: 0
+        enabled: 1
+

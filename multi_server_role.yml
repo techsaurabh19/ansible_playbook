@@ -1,0 +1,5 @@
+---
+- name: configure multiserver on dev machine
+  hosts: dev
+  roles:
+    -  multi_server

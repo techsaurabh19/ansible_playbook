@@ -1,0 +1,27 @@
+---
+- name: install haproxy
+  hosts: localhost
+  become: true
+  tasks:
+    - name: install haproxy
+      yum:
+        name: haproxy
+        state: present
+    
+    - name: configure copy
+      template: 
+        src: haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+      notify: restart
+  handlers:  
+    - name: restart
+      service:
+        name: haproxy
+        state: restarted
+
+- name: template copy on 
+  hosts: dev,test
+  tasks:
+    - template:
+        src: hatemplate.j2 
+        dest: /var/www/html/index.html

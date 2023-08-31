@@ -1,0 +1,19 @@
+---
+- name: Generate Configuration File Using Template
+  hosts: test
+  become: yes  # Run tasks with sudo privileges
+
+  vars:
+    is_production: true  # Change this value as needed
+
+  tasks:
+    - name: Ensure configuration directory exists
+      file:
+        path: /etc/my_app
+        state: directory
+
+    - name: Generate configuration file from template
+      template:
+        src: my_app_config.j2
+        dest: /etc/my_app/my_app.conf
+

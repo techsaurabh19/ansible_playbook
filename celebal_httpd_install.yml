@@ -1,0 +1,13 @@
+---
+ - name: Install httpd service on 24-08-2023
+   hosts: all
+   tasks:
+     - name: Install httpd service via playbook
+       ansible.builtin.yum:
+         name: httpd
+         state: present
+     - name: start httpd service
+       ansible.builtin.service:
+         name: httpd
+         state: started
+         enabled: 1 

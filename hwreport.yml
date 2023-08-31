@@ -1,0 +1,10 @@
+---
+- name: collect hw information via template
+  hosts: dev,test
+  vars:
+    gather_facts: 1
+  tasks:
+    - name: getting facts
+      ansible.builtin.template:
+        src: hwreport.j2
+        dest: /home/node/hwreport.txt

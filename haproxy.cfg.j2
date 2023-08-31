@@ -1,0 +1,9 @@
+frontend http_web
+     bind *:80
+     default_backend    haproxy
+     option             forwardfor
+
+backend haproxy
+    balance roundrobin
+    server  node1 192.168.81.145:80 check
+    server  node2 192.168.81.146:80  check

@@ -1,0 +1,6 @@
+---
+- name: create user
+  user:
+    name: "{{ item }}"
+    state: present
+

@@ -1,0 +1,10 @@
+---
+# vars file for yum
+
+baseurl: file:///mnt/AppStream
+name:  appStream
+description:  AppStream
+
+baseurl: file:///mnt/BaseOS
+name: baseOS
+description: BaseOS

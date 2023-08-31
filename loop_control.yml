@@ -1,0 +1,30 @@
+---
+- name: user loop and controller
+  hosts: all
+  vars:
+    mariadb_packages:
+      - mariadb-server
+      - python3
+  tasks:
+    - name: install "{{ mariadb_packages }}" 
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ mariadb_packages }}"
+      when: ansible_os_family == "RedHat" and ansible_distribution_version == "9.0"
+      notify: 
+        - mariadb_service
+        - httpd_Service
+
+
+  handlers:
+    - name: mariadb_service
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: true
+
+    - name: httpd_service
+      ansible.builtin.service:
+        name: httpd
+        state: restarted

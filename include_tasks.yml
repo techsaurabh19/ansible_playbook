@@ -1,0 +1,12 @@
+---
+- name: example of add usrs via include_tasks
+  hosts: all
+  tasks:
+    - name: print a msg
+      debug:
+        msg: "this is include_tasks example"
+    - name: inclue tasks file for user creation
+      include_tasks: user_creation.yml
+      loop:
+        - a
+        - n

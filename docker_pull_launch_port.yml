@@ -1,0 +1,24 @@
+---
+- name: docker images create launch and apply the port
+  hosts: docker
+  tasks:
+    - name: docker images
+      docker_image:
+        name: httpd
+        state: present
+        source: pull
+    - name: docker image to container
+      docker_container:
+        name: httpd_server
+        image: httpd
+        state: started
+        ports:
+          - 8080:80
+    - name: Copy a file into the container
+      command: docker cp -r /home/node/project httpd_server:/usr/local/apache2/htdocs/
+
+    - name: Apply Port Forwarding Rule
+      ansible.builtin.firewalld:
+        zone: public
+        port: 8080/tcp
+        state: enabled

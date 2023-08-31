@@ -1,0 +1,31 @@
+---
+- name: install Docker
+  hosts: docker
+  gather_facts: yes
+  tasks:
+    - name: install yum_utils for configure
+      yum:
+        name: yum-utils
+        state: present
+    - name: first add docker repo
+      shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    - name: Install Docker
+      ansible.builtin.yum:
+        name:
+          - docker-ce
+        state: present
+    - name: Start Docker
+      ansible.builtin.service:
+        name: docker
+        enabled: true
+        state: started
+    - name: image pull 
+      docker_image:
+        name: nginx
+        source: pull
+    - name: run a docker container
+      docker_container:
+        name: nginx_container
+        image: nginx
+        state: started
+

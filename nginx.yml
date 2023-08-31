@@ -1,0 +1,8 @@
+---
+ - name: nginx installation
+   hosts: all
+   tasks:
+     - name: instll nginx
+       ansible.builtin.yum:
+         name: nginx
+         state: absent

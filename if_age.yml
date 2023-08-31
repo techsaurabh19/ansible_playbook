@@ -1,0 +1,12 @@
+---
+- name: age verify
+  hosts: docker
+  vars:
+    age_is: 17
+    name: saurabh
+    age: "{{ age_is }}"
+  tasks:
+    - name: test
+      template:
+        src: if_age.j2
+        dest: /home/node/ifage.txt

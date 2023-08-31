@@ -1,0 +1,13 @@
+---
+ - name: install docker via playbook
+   hosts: docker
+   tasks:
+     - name: Install docker
+       yum:
+         name: docker*
+         state: present
+
+     - name: node is a part of docker
+       user:
+         name: $USER
+         group: docker

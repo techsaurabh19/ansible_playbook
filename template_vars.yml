@@ -1,0 +1,20 @@
+---
+- name: write production and demo db file
+  hosts: all
+  vars:
+    is_production: 0
+    db_name: production_db
+    db_host: production_server
+    db_port: 3306
+
+  tasks:
+    - name: create a production and demo templates
+      template:
+        src: template_vars.j2
+        dest: /home/node/dbinfo.txt
+      register: test
+    
+    - name: test and debug
+      debug:
+          var: test
+

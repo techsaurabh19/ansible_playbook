@@ -1,0 +1,5 @@
+---
+- name: play docker roe
+  hosts: docker
+  roles:
+    - docker-image_run

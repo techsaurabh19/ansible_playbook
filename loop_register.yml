@@ -1,0 +1,15 @@
+---
+- name: loop register test
+  gather_facts: no
+  hosts: all
+  tasks:
+    - name: loop echo task
+      ansible.builtin.user: 
+        name: "{{ item }}"
+      loop:
+        - one
+        - two
+      register: result_Echo
+    - name: loop debuger
+      ansible.builtin.debug:
+        var: result_Echo

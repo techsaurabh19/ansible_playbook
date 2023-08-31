@@ -1,0 +1,10 @@
+---
+- name: import another playbook
+  hosts: all
+  tasks:
+    - name: install httpd service
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+- name: import another playbook
+  ansible.builtin.import_playbook: nginx.yml

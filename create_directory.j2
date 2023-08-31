@@ -1,0 +1,6 @@
+{% if is_test %}
+{{ tail }} /etc/passwd >> /home/node/file.1
+{% else %}
+{{ tail }} /etc/group >> /home/node/file.2
+{% endif %}
+

@@ -1,0 +1,11 @@
+---
+- name: check templete group and users
+  hosts: all
+  vars:
+    is_test: false
+    tail: group
+  tasks:
+    - name: check details
+      ansible.builtin.template:
+        src: create_directory.j2 
+        dest: /home/node/file1

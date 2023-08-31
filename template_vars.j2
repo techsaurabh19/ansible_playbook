@@ -1,0 +1,12 @@
+{% if is_production %}
+db_name = {{ db_name }}
+db_host = {{ db_host }}
+db_port = {{ db_port }}
+
+{% else %}
+db_name = dev_db
+db_host = dev_host
+db_port = dev_port
+{% endif %}
+
+

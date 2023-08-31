@@ -1,0 +1,16 @@
+---
+- name: user add
+  hosts: localhost
+  vars_prompt:
+    - name: username
+      prompt: What is your username?
+    - name: password
+      prompt: enter your password
+      encrypt: sha512_crypt
+
+  tasks:
+    - name: user create
+      user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        state: present

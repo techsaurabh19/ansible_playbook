@@ -1,0 +1,9 @@
+---
+- name: import_tasks
+  hosts: all
+  tasks:
+    - name: import task to create user
+      debug:
+        msg: "example 2 for import_tasks"
+    - name:
+      import_tasks: user_creation.yml

@@ -1,0 +1,14 @@
+# This is an example configuration template for my_app
+
+{% if is_production %}
+# Production Environment Settings
+database_host = production_db_server
+database_name = production_db
+{% else %}
+# Development Environment Settings
+database_host = development_db_server
+database_name = development_db
+{% endif %}
+
+# Common settings go here
+

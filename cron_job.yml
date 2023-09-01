@@ -1,0 +1,12 @@
+---
+ - name: cron job
+   hosts: docker
+   tasks:
+     - name: Creates a cron file under /etc/cron.d
+       ansible.builtin.cron:
+        name: yum autoupdate
+        minute: "*/2"
+        user: node
+        job: echo "hello" >> /home/node/cron.txt 
+        state: absent
+

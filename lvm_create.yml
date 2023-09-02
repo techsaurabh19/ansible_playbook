@@ -1,0 +1,30 @@
+---
+- name: create lvm
+  hosts: docker
+  tasks:
+    - name: create pv 
+      lvg: 
+        vg: myvg
+        pvs: /dev/sdb
+        pesize: 32
+    - name: create lv
+      lvol:
+        vg: myvg
+        lv: mylv
+        size: 500m
+        force: true
+    - name: format xfs
+      filesystem:
+        fstype: xfs
+        dev: /dev/myvg/mylv
+    - name: create directory for mount lv
+      file:
+        path: /mydevice
+        state: directory
+    - name: mount lvm 
+      mount: 
+        path: /mydevice
+        src: /dev/myvg/mylv
+        fstype: xfs
+        opts: defaults
+        state: mounted

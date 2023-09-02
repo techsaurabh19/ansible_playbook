@@ -1,0 +1,7 @@
+---
+- name: configure network
+  hosts: localhost
+  connection: local
+  tasks: 
+    - name: set static ip address
+      ansible.builtin.command: ifconfig ens160 192.168.1.100 netmask 255.255.255.0

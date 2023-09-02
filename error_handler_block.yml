@@ -1,0 +1,16 @@
+---
+- name: install httpd with error handler
+  hosts: docker
+  tasks:
+    - block:
+      - name: install httpd latest package
+        yum: 
+          name: httpd
+          state: latest
+      - name: starting httpd service
+        service: 
+          name: httpd
+          state: started
+          enabled: 1 
+      become: yes
+      when: ansible_facts['distribution'] == 'RedHat'

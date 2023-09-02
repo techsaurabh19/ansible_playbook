@@ -1,0 +1,21 @@
+---
+ - name: ignore errors example
+   hosts: docker
+   tasks:
+     - name: check cockpit service status
+       command: systemctl is-active cockpit.socket
+       register: cockpit
+       ignore_errors: yes
+     - name: debug
+       debug:
+         msg : "{{ cockpit }}"
+     - name: start cockpit service
+       service:
+         name: cockpit.socket
+         state: started
+       when: cockpit.rc != 0
+     - name: restarting the cockpit service if already runnin
+       service: 
+         name: cockpit.socket
+         state: restarted 
+       when: cockpit.rc == 0

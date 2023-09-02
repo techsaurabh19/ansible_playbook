@@ -1,0 +1,12 @@
+---
+- name: failed when check example
+  hosts: docker
+  tasks:
+    - debug:
+        msg: "Incompatible operating system"
+      failed_when: ansible_distribution == 'RedHat'
+    - name: Install apache
+      apt: 
+        name: apache2
+        state: latest
+
